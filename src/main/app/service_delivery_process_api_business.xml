@@ -1,0 +1,304 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:spring="http://www.springframework.org/schema/beans" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-current.xsd
+http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd">
+    <sub-flow name="createAServiceOrderToProcess">
+        <set-payload value="{
+   &quot;id&quot;: 1234,
+   &quot;state&quot;:&quot;Active&quot;,
+   &quot;serviceSpecification&quot;:{
+      &quot;id&quot;:&quot;conferenceBridgeEquipment&quot;,
+      &quot;href&quot;:&quot;http://serverlocation:port/catalogManagement/serviceSpecification /conferenceBridgeEquipment&quot;
+   },
+   &quot;serviceCharacteristic&quot;:[
+      {
+         &quot;name&quot;:&quot;numberOfVc500Units&quot;,
+         &quot;value&quot;:&quot;1&quot;
+      },
+      {
+         &quot;name&quot;:&quot;numberOfVc100Units&quot;,
+         &quot;value&quot;:&quot;2&quot;
+      },
+      {
+         &quot;name&quot;:&quot;routerType&quot;,
+         &quot;value&quot;:&quot;CiscoASR1000&quot;
+      },
+      {
+         &quot;name&quot;:&quot;powerSupply&quot;,
+         &quot;value&quot;:&quot;UK&quot;
+      }
+   ],
+   &quot;links&quot;:[
+      {
+         &quot;rel&quot;:&quot;/linkrels/service/order/info&quot;,
+         &quot;uri&quot;:&quot;/service/order/1234&quot;,
+         &quot;method&quot;:&quot;GET&quot;
+      },
+      {
+         &quot;rel&quot;:&quot;/linkrels/service/order/updateInfo&quot;,
+         &quot;uri&quot;:&quot;/service/order/1234&quot;,
+         &quot;method&quot;:&quot;PUT&quot;
+      },
+      {
+         &quot;rel&quot;:&quot;/linkrels/service/order/delete&quot;,
+         &quot;uri&quot;:&quot;/service/order/1234&quot;,
+         &quot;method&quot;:&quot;DELETE&quot;
+      }
+   ]
+}" doc:name="Set Payload"/>
+    </sub-flow>
+    <sub-flow name="getServiceOrderById">
+        <set-payload value="{
+   &quot;id&quot;:1234,
+   &quot;href&quot;:&quot;&quot;,
+   &quot;name&quot;:&quot;&quot;,
+   &quot;description&quot;:&quot;&quot;,
+   &quot;type&quot;:&quot;&quot;,
+   &quot;version&quot;:&quot;&quot;,
+   &quot;state&quot;:&quot;Active&quot;,
+   &quot;serviceSpecification&quot;:{
+      &quot;id&quot;:&quot;conferenceBridgeEquipment&quot;,
+      &quot;href&quot;:&quot;http://serverlocation:port/catalogManagement/serviceSpecification /conferenceBridgeEquipment&quot;
+   },
+   &quot;serviceCharacteristic&quot;:[
+      {
+         &quot;name&quot;:&quot;numberOfVc500Units&quot;,
+         &quot;value&quot;:&quot;1&quot;
+      },
+      {
+         &quot;name&quot;:&quot;numberOfVc100Units&quot;,
+         &quot;value&quot;:&quot;2&quot;
+      },
+      {
+         &quot;name&quot;:&quot;routerType&quot;,
+         &quot;value&quot;:&quot;CiscoASR1000&quot;
+      },
+      {
+         &quot;name&quot;:&quot;powerSupply&quot;,
+         &quot;value&quot;:&quot;UK&quot;
+      }
+   ],
+   &quot;serviceRelationship&quot;:[
+
+   ],
+   &quot;relatedParty&quot;:[
+
+   ],
+   &quot;supportingService&quot;:[
+
+   ],
+   &quot;supportingResource&quot;:[
+
+   ],
+   &quot;links&quot;:[
+      {
+         &quot;rel&quot;:&quot;/linkrels/service/order/info&quot;,
+         &quot;uri&quot;:&quot;/service/order/1234&quot;,
+         &quot;method&quot;:&quot;GET&quot;
+      },
+      {
+         &quot;rel&quot;:&quot;/linkrels/service/order/updateInfo&quot;,
+         &quot;uri&quot;:&quot;/service/order/1234&quot;,
+         &quot;method&quot;:&quot;PUT&quot;
+      },
+      {
+         &quot;rel&quot;:&quot;/linkrels/service/order/delete&quot;,
+         &quot;uri&quot;:&quot;/service/order/1234&quot;,
+         &quot;method&quot;:&quot;DELETE&quot;
+      }
+   ]
+}" doc:name="Set Payload"/>
+    </sub-flow>
+    <sub-flow name="getAllServiceOrderByFilters">
+        <set-payload value="[
+   {
+      &quot;id&quot;:1234,
+      &quot;href&quot;:&quot;&quot;,
+      &quot;name&quot;:&quot;&quot;,
+      &quot;description&quot;:&quot;&quot;,
+      &quot;type&quot;:&quot;&quot;,
+      &quot;version&quot;:&quot;&quot;,
+      &quot;state&quot;:&quot;Active&quot;,
+      &quot;serviceSpecification&quot;:{
+         &quot;id&quot;:&quot;conferenceBridgeEquipment&quot;,
+         &quot;href&quot;:&quot;http://serverlocation:port/catalogManagement/serviceSpecification /conferenceBridgeEquipment&quot;
+      },
+      &quot;serviceCharacteristic&quot;:[
+         {
+            &quot;name&quot;:&quot;numberOfVc500Units&quot;,
+            &quot;value&quot;:&quot;1&quot;
+         },
+         {
+            &quot;name&quot;:&quot;numberOfVc100Units&quot;,
+            &quot;value&quot;:&quot;2&quot;
+         },
+         {
+            &quot;name&quot;:&quot;routerType&quot;,
+            &quot;value&quot;:&quot;CiscoASR1000&quot;
+         },
+         {
+            &quot;name&quot;:&quot;powerSupply&quot;,
+            &quot;value&quot;:&quot;UK&quot;
+         }
+      ],
+      &quot;serviceRelationship&quot;:[
+
+      ],
+      &quot;relatedParty&quot;:[
+
+      ],
+      &quot;supportingService&quot;:[
+
+      ],
+      &quot;supportingResource&quot;:[
+
+      ],
+      &quot;links&quot;:[
+         {
+            &quot;rel&quot;:&quot;/linkrels/service/order/info&quot;,
+            &quot;uri&quot;:&quot;/service/order/1234&quot;,
+            &quot;method&quot;:&quot;GET&quot;
+         },
+         {
+            &quot;rel&quot;:&quot;/linkrels/service/order/updateInfo&quot;,
+            &quot;uri&quot;:&quot;/service/order/1234&quot;,
+            &quot;method&quot;:&quot;PUT&quot;
+         },
+         {
+            &quot;rel&quot;:&quot;/linkrels/service/order/delete&quot;,
+            &quot;uri&quot;:&quot;/service/order/1234&quot;,
+            &quot;method&quot;:&quot;DELETE&quot;
+         }
+      ]
+   },
+   {
+      &quot;id&quot;:5678,
+      &quot;href&quot;:&quot;&quot;,
+      &quot;name&quot;:&quot;&quot;,
+      &quot;description&quot;:&quot;&quot;,
+      &quot;type&quot;:&quot;&quot;,
+      &quot;version&quot;:&quot;&quot;,
+      &quot;state&quot;:&quot;Active&quot;,
+      &quot;serviceSpecification&quot;:{
+         &quot;id&quot;:&quot;conferenceBridgeEquipment&quot;,
+         &quot;href&quot;:&quot;http://serverlocation:port/catalogManagement/serviceSpecification /conferenceBridgeEquipment&quot;
+      },
+      &quot;serviceCharacteristic&quot;:[
+         {
+            &quot;name&quot;:&quot;numberOfVc500Units&quot;,
+            &quot;value&quot;:&quot;1&quot;
+         },
+         {
+            &quot;name&quot;:&quot;numberOfVc100Units&quot;,
+            &quot;value&quot;:&quot;2&quot;
+         },
+         {
+            &quot;name&quot;:&quot;routerType&quot;,
+            &quot;value&quot;:&quot;CiscoASR1000&quot;
+         },
+         {
+            &quot;name&quot;:&quot;powerSupply&quot;,
+            &quot;value&quot;:&quot;UK&quot;
+         }
+      ],
+      &quot;serviceRelationship&quot;:[
+
+      ],
+      &quot;relatedParty&quot;:[
+
+      ],
+      &quot;supportingService&quot;:[
+
+      ],
+      &quot;supportingResource&quot;:[
+
+      ],
+      &quot;links&quot;:[
+         {
+            &quot;rel&quot;:&quot;/linkrels/service/order/info&quot;,
+            &quot;uri&quot;:&quot;/service/order/5678&quot;,
+            &quot;method&quot;:&quot;GET&quot;
+         },
+         {
+            &quot;rel&quot;:&quot;/linkrels/service/order/updateInfo&quot;,
+            &quot;uri&quot;:&quot;/service/order/5678&quot;,
+            &quot;method&quot;:&quot;PUT&quot;
+         },
+         {
+            &quot;rel&quot;:&quot;/linkrels/service/order/delete&quot;,
+            &quot;uri&quot;:&quot;/service/order/5678&quot;,
+            &quot;method&quot;:&quot;DELETE&quot;
+         }
+      ]
+   }
+]" doc:name="Set Payload"/>
+    </sub-flow>
+    <sub-flow name="deleteServiceOrderById">
+        <set-payload value="#[NullPayload.getInstance()]" doc:name="Set Payload"/>
+    </sub-flow>
+    <sub-flow name="updateServiceOrderById">
+        <set-payload value="{
+   &quot;id&quot;:1234,
+   &quot;href&quot;:&quot;&quot;,
+   &quot;name&quot;:&quot;&quot;,
+   &quot;description&quot;:&quot;&quot;,
+   &quot;type&quot;:&quot;&quot;,
+   &quot;version&quot;:&quot;&quot;,
+   &quot;state&quot;:&quot;Active&quot;,
+   &quot;serviceSpecification&quot;:{
+      &quot;id&quot;:&quot;conferenceBridgeEquipment&quot;,
+      &quot;href&quot;:&quot;http://serverlocation:port/catalogManagement/serviceSpecification /conferenceBridgeEquipment&quot;
+   },
+   &quot;serviceCharacteristic&quot;:[
+      {
+         &quot;name&quot;:&quot;numberOfVc500Units&quot;,
+         &quot;value&quot;:&quot;1&quot;
+      },
+      {
+         &quot;name&quot;:&quot;numberOfVc100Units&quot;,
+         &quot;value&quot;:&quot;2&quot;
+      },
+      {
+         &quot;name&quot;:&quot;routerType&quot;,
+         &quot;value&quot;:&quot;CiscoASR1000&quot;
+      },
+      {
+         &quot;name&quot;:&quot;powerSupply&quot;,
+         &quot;value&quot;:&quot;UK&quot;
+      }
+   ],
+   &quot;serviceRelationship&quot;:[
+
+   ],
+   &quot;relatedParty&quot;:[
+
+   ],
+   &quot;supportingService&quot;:[
+
+   ],
+   &quot;supportingResource&quot;:[
+
+   ],
+   &quot;links&quot;:[
+      {
+         &quot;rel&quot;:&quot;/linkrels/service/order/info&quot;,
+         &quot;uri&quot;:&quot;/service/order/1234&quot;,
+         &quot;method&quot;:&quot;GET&quot;
+      },
+      {
+         &quot;rel&quot;:&quot;/linkrels/service/order/updateInfo&quot;,
+         &quot;uri&quot;:&quot;/service/order/1234&quot;,
+         &quot;method&quot;:&quot;PUT&quot;
+      },
+      {
+         &quot;rel&quot;:&quot;/linkrels/service/order/delete&quot;,
+         &quot;uri&quot;:&quot;/service/order/1234&quot;,
+         &quot;method&quot;:&quot;DELETE&quot;
+      }
+   ]
+}" doc:name="Set Payload"/>
+    </sub-flow>
+</mule>
